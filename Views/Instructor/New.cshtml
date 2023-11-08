@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "New";
+}
+@model Instructor
+
+<form method="post" action="/Instructor/SaveNew">
+    <div>
+        <label>Name</label>
+        <input class="form-control" name="Name" value="@Model?.Name" id="Name" type="text" />
+    </div>
+
+    <div>
+        <label>Salary</label>
+        <input class="form-control" name="Salary" value="@Model?.Salary" id="Salary" type="number" />
+    </div>
+
+    <div>
+        <label>Image</label>
+        <input class="form-control" name="Image" value="@Model?.Image" id="Image" type="text" />
+    </div>
+
+    <div>
+        <label>Adress</label>
+        <input class="form-control" name="Adress" value="@Model?.Adress" id="Adress" type="text" />
+    </div>
+
+    <div>
+        <label>Department</label>
+        @*<input class="form-control" name="Dept_Id"  value="@Model?.Dept_Id" id="Dept_Id" type="number" />*@
+        <select class="form-control" name="Dept_Id" id="Dept_Id" onchange="CourseData()">
+            @foreach (Department item in ViewBag.DepartmentList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Course</label>
+        @*<input class="form-control" name="Crs_Id" value="@Model? .Crs_Id" id="Crs_Id" type="number" />*@
+        <select class="form-control" name="Crs_Id" id="Crs_Id">
+            @foreach (Course item in ViewBag.CoursesList)
+            {
+                <option value="@item.Dept_Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-primary mt-2" value="Save" />
+</form>
+
+<a class="btn btn-danger mt-3" href="/Instructor/Index"> Back To List </a>
+
+@section Scripts {
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function CourseData() {
+            var depid = document.getElementById("Dept_Id").value;
+            console.log(depid);
+            $.ajax(
+                {
+                    url: "/Instructor/GetCourses?did="+depid,success: function (result) {
+                        document.getElementById("Crs_Id").innerHTML = "";
+                        console.log(result);
+                        for (let item of result) 
+                        {
+                            document.getElementById("Crs_Id").innerHTML+="<option value="+item.id+">"+item.name+"</option>";
+                        }
+                    }
+                });
+        }
+    </script>
+}

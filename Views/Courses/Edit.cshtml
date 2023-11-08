@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "AllCourses";
+}
+@model Course
+
+<form method="post" action="/Courses/SaveEdit/@Model.Id">
+    <div>
+        <label asp-for="Name">Course Name</label>
+        <input class="form-control" asp-for="Name" value="@Model.Name" />
+    </div>
+
+    <div>
+        <label asp-for="Degree"></label>
+        <input class="form-control" asp-for="Degree" value="@Model.Degree"   />
+    </div>
+
+    <div>
+        <label asp-for="Hours"></label>
+        <input class="form-control" asp-for="Hours" value="@Model.Hours"    />
+    </div>
+
+    <div>
+        <label asp-for="MinimumDegree"></label>
+        <input class="form-control" asp-for="MinimumDegree" value="@Model.MinimumDegree"  />
+    </div>
+
+    <div>
+        <label asp-for="Dept_Id"></label>
+        <select class="form-control" asp-for="Dept_Id">
+            @foreach (Department department in ViewBag.DepartmentsList)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+        </select>
+    </div>
+    <input type="submit" class="btn btn-success mt-2" value="Save" />
+</form>
+
+<a asp-action="Index" class="btn btn-primary mt-3"> Back To All Courses</a>
+

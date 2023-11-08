@@ -1,0 +1,29 @@
+﻿@model List<Course>
+@{
+    Layout = "_Advanced_Layout";
+}
+<table class="table table-bordered table-hover">
+
+    <tr class="text-center">
+        <th>Name</th>
+        <th>Degree</th>
+        <th>Hours</th>
+        <th>Minimum Degree</th>
+        <th>Department</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (Course item in Model)
+    {
+        <tr class="text-center">
+            <td>@item.Name</td>
+            <td>@item.Degree</td>
+            <td>@item.Hours</td>
+            <td> @item.MinimumDegree</td>
+            <td>@item.Department.Name</td>
+            <td><a href="/Courses/Edit/@item.Id" class="btn btn-danger">Edit </a></td>
+        </tr>
+    }
+</table>
+
+@*<a href="/Courses/AddCourses" class="btn btn-success">Add New Course </a>*@
+<a asp-action="AddCourses" asp-controller="Courses" class="btn btn-success">Add New Course </a>

@@ -1,0 +1,48 @@
+﻿
+@model Course
+
+<form method="post" asp-action="AddCourses">
+    <div>
+        <label asp-for="Name">Course Name</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Degree"></label>
+        <input class="form-control" asp-for="Degree" />
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Hours"></label>
+        <input class="form-control" asp-for="Hours" />
+        <span asp-validation-for="Hours" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="MinimumDegree"></label>
+        <input class="form-control" asp-for="MinimumDegree" />
+        <span asp-validation-for="MinimumDegree" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Dept_Id"></label>
+        <select class="form-control" asp-for="Dept_Id">
+            @foreach (Department department in ViewBag.DepartmentsList)
+                {
+                <option value="@department.Id">@department.Name</option>
+                }
+        </select>
+        <span asp-validation-for="Dept_Id" class="text-danger"></span>
+    </div>
+     <input type="submit" class="btn btn-success mt-3" value="Add Course"/>
+</form>
+
+<a asp-action="Index" class="btn btn-primary mt-3"> Back To All Courses</a>
+
+@section Scripts {
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"<</script>
+    }

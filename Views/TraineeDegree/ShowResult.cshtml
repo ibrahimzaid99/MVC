@@ -1,0 +1,23 @@
+﻿@model TraineeDegreeInCourseWithColorViewModel
+@{
+
+    <table class="table table-bordered table-hover">
+
+    <tr>
+     <th>Id</th>
+     <th>Name</th>
+     <th>Course</th>
+     <th>Grade</th>
+   </tr> 
+
+    <tr style="color:@Model.Color">
+       <td>@Model.Trainee_Id</td>
+       <td>@Model.Trainee_Name</td>
+       <td>@Model.Trainee_Course</td>
+       <td>@Model.Trainee_Grade</td>
+    </tr>
+
+    </table>
+}
+
+

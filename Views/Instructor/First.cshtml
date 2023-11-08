@@ -1,0 +1,20 @@
+﻿
+@model Instructor
+<table class="table table-bordered table-hover">
+    <tr class="text-center">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Adress</th>
+    <th>Image</th>
+    <th>Action</th>
+   </tr>
+    <tr class="text-center">
+        <td>@Model.Id</td>
+        <td>@Model.Name</td>
+        <td>@Model.Salary</td>
+        <td>@Model.Adress</td>
+        <td><img src="/images/@Model.Image" style="width:150px"></td>
+        <td><a href="/instructor/index" class="btn btn-danger">Back To All</a></td> 
+    </tr>
+</table>
